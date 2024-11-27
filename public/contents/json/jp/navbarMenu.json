@@ -1,0 +1,24 @@
+{
+    "navbarContents": [
+        {
+            "targetLink": "/",
+            "name": "ライブラリ"
+        },
+        {
+            "targetLink": "/books",
+            "name": "本"
+        },
+        {
+            "targetLink": "#",
+            "name": "AIストーリージェネレーター"
+        },
+        {
+            "targetLink": "#",
+            "name": "イベント"
+        },
+        {
+            "targetLink": "#",
+            "name": "ジャンル"
+        }
+    ]
+}

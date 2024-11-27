@@ -1,0 +1,13 @@
+{
+    "marketingBanners": [
+        {
+            "imagePath": "/images/banner_landscape_1.png"
+        },
+        {
+            "imagePath": "/images/banner_landscape_2.png"
+        },
+        {
+            "imagePath": "/images/banner_landscape_3.png"
+        }
+    ]
+}

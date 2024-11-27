@@ -1,0 +1,24 @@
+{
+    "navbarContents": [
+        {
+            "targetLink": "/",
+            "name": "Library"
+        },
+        {
+            "targetLink": "/books",
+            "name": "Books"
+        },
+        {
+            "targetLink": "#",
+            "name": "AI Story Generator"
+        },
+        {
+            "targetLink": "#",
+            "name": "Events"
+        },
+        {
+            "targetLink": "#",
+            "name": "Genres"
+        }
+    ]
+}
