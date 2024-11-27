@@ -1,6 +1,8 @@
 import { NavbarContent } from "@/interfaces/contents/NavbarContent"
 import { useEffect, useState } from "react"
 import { useLocalization } from "./localizationHook"
+import { LoginUserResponse } from "@/interfaces/apis/onboarding"
+import { GET } from "@/api/api"
 
 export const useNavbarContent = () : NavbarContent[] => {
     const localization = useLocalization()
@@ -19,4 +21,36 @@ export const useNavbarContent = () : NavbarContent[] => {
     }, [localization])
 
     return navbarContents
+}
+
+export const useUserNavbar = () : LoginUserResponse=> {
+    const [loginUserResponse, setLoginUserResponse] = useState<LoginUserResponse>({
+        id: 0,
+        name: "",
+        address: "",
+        phone_number: "",
+        profile_picture: "",
+        password: "",
+        date_of_birth: "",
+        created_at: "",
+        updated_at: ""
+
+    })
+
+    useEffect(()=> {
+        let fetchData = async () => {
+            try {
+                const response = await GET(`onboarded`, true);
+                if (response) {
+                    setLoginUserResponse(response.data.user);
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        fetchData()
+    }, [])
+
+    return loginUserResponse
 }

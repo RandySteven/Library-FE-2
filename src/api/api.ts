@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+
 export const GET = async (url:string, requiredJwt: boolean) => {
     const headers: Record<string, string> = {
         'Content-Type': 'application/json',
@@ -15,6 +17,9 @@ export const GET = async (url:string, requiredJwt: boolean) => {
         })
 
         if(response.status !== 200) {
+            if(response.status === 401) {
+                redirect('login')
+            }
             console.error("Failed response with status:", response.status);
             return null;   
         }
