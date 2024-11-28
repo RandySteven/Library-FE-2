@@ -1,6 +1,7 @@
 "use client";
 import { BookList } from "@/components/Fragments/BookList";
 import { BookMarketingBanner } from "@/components/Fragments/BookMarketingBanner"
+import { GenreList } from "@/components/Fragments/GenreList";
 import { Fragment } from "react"
 
 export const BooksLayout = () => {
@@ -8,7 +9,8 @@ export const BooksLayout = () => {
         <Fragment>
             <div className="px-8 py-4">
                 <BookMarketingBanner />
-                <div className="flex my-4">
+                <div className="grid grid-cols-1">
+                    <GenreList />
                     <BookList />
                 </div>
             </div>

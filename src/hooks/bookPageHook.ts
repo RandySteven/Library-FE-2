@@ -1,5 +1,6 @@
 import { GET } from "@/api/api"
 import { ListBookResponse } from "@/interfaces/apis/book"
+import { ListGenresResponse } from "@/interfaces/apis/genre"
 import { MarketingBannerContent } from "@/interfaces/contents/MarketingBannerContent"
 import { useEffect, useState } from "react"
 
@@ -40,4 +41,25 @@ export const useGetBookList = () : ListBookResponse[] => {
     }, [])
 
     return listBookResponse
+}
+
+export const useGetGenreList = () : ListGenresResponse[] => {
+    const [listGenresResponse, setListGenresResponse] = useState<ListGenresResponse[]>([])
+
+    useEffect(() => {
+        let fetchData = async () => {
+            try{
+                const response = await GET(`genres`, false)
+                if (response) {
+                    setListGenresResponse(response.data.genres)
+                }
+            }catch(error) {
+                console.log("Error fetching data:", error)
+            }
+        }
+
+        fetchData()
+    }, [])
+
+    return listGenresResponse
 }
