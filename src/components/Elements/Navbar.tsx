@@ -4,7 +4,7 @@ import { NavbarProps } from "@/interfaces/props/NavbarProp";
 import Link from "next/link";
 import { useUserNavbar } from "@/hooks/navbarContentHook";
 
-const LoginedNavbar = () => {
+export const LoginedNavbar = () => {
     const getUserLogin = useUserNavbar()
     const [isDropdownVisible, setDropdownVisible] = useState(false);
     const [language, setLanguage] = useState<string>("en");
@@ -79,36 +79,15 @@ const LoginedNavbar = () => {
     </>
 }
 
-export const NavbarComponent: React.FC<NavbarProps> = ({ children }) => {
+export const SignInNavbar = () => {
+    return <>
+        <Fragment>
+            <div>
+                <a href={`login`}>
+                    Sign In
+                </a>
+            </div>
+        </Fragment>
+    </>
+}
 
-    return (
-        <>
-            <Fragment>
-                <nav className="bg-slate-200">
-                    <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-                        <div className="relative flex h-16 items-center justify-between">
-                            <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                                <div className="hidden sm:ml-6 sm:block">
-                                    <div className="flex space-x-4">{children}</div>
-                                </div>
-                            </div>
-                            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                                <div className="relative ml-3">
-                                    {document.cookie != `` ? (
-                                        <LoginedNavbar/>
-                                    ):
-                                        <div>
-                                            <a href={`login`}>
-                                                Sign In
-                                            </a>
-                                        </div>
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </Fragment>
-        </>
-    );
-};
