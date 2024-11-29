@@ -23,7 +23,7 @@ export const BookCard = (props: BookCardProp) => {
     }
     return <>
         <Fragment>
-            <div className="grid grid-cols-1 bg-white border border-green-300 py-5">
+            <div className="grid grid-cols-1 bg-white border border-green-300 py-5 hover:bg-green-200">
                 <Link
                     href={`/books/${props.id}`}>
                         <div className="px-2">

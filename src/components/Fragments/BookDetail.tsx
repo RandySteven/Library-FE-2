@@ -1,6 +1,7 @@
 import { BookDetailProp } from "@/interfaces/props/BookDetailProp"
 import { Fragment } from "react"
 import { TableData } from "../Elements/TableData"
+import { getAuthors, getGenres } from "@/utils/util"
 
 export const BookDetail = (prop : BookDetailProp) => {
     return <>
@@ -12,8 +13,8 @@ export const BookDetail = (prop : BookDetailProp) => {
                 <table className="border border-1 border-black">
                     <tbody>
                         <TableData keyData="Rating" value={prop.rating} />
-                        <TableData keyData="Authors" value={prop.authors.join(",")} />
-                        <TableData keyData="Genres" value={prop.genres.join(",")} />
+                        <TableData keyData="Authors" value={getAuthors(prop.authors)} />
+                        <TableData keyData="Genres" value={getGenres(prop.genres)} />
                         <TableData keyData="Description" value={prop.description} />
                     </tbody>
                 </table>

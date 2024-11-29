@@ -11,10 +11,10 @@ export const BookLayout = (props : {
 
     return <>
         <Fragment>
-            <div className="mx-4 flex flex-row">
+            <div className="mx-16 flex flex-row my-5">
                 <Image 
                     imgAlt={`image_for_${props.id}`}
-                    imgClass="rounded"
+                    imgClass="rounded border border-black"
                     imgHeight={800}
                     imgWidth={400}
                     imgSrc={book.image}

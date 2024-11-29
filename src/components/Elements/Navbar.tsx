@@ -30,8 +30,10 @@ export const LoginedNavbar = () => {
 
     return <>
         <Fragment>
-            <div>
-                <span>{}</span>
+            <div className="flex">
+                <div className="mr-2">
+                    {getUserLogin.name}
+                </div>
                 <button
                     type="button"
                     className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -42,10 +44,13 @@ export const LoginedNavbar = () => {
                  >
                     <span className="absolute -inset-1.5"></span>
                     <span className="sr-only">Open user menu</span>
-                    {getUserLogin.name}
                     <img
                         className="size-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        src={
+                            getUserLogin?.profile_picture == "" ? 
+                            "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" :
+                            getUserLogin?.profile_picture
+                        }
                         alt=""
                     />
                 </button>
