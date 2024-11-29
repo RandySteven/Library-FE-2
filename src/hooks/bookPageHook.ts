@@ -1,5 +1,5 @@
 import { GET } from "@/api/api"
-import { ListBookResponse } from "@/interfaces/apis/book"
+import { BookDetailResponse, ListBookResponse } from "@/interfaces/apis/book"
 import { ListGenresResponse } from "@/interfaces/apis/genre"
 import { MarketingBannerContent } from "@/interfaces/contents/MarketingBannerContent"
 import { useEffect, useState } from "react"
@@ -28,7 +28,7 @@ export const useGetBookList = () : ListBookResponse[] => {
     useEffect(() => {
         let fetchData = async () => {
             try {
-                const response = await GET(`books`, true);
+                const response = await GET(`books`, false);
                 if (response) {
                     setListBookResponse(response.data.books);
                 }
@@ -62,4 +62,34 @@ export const useGetGenreList = () : ListGenresResponse[] => {
     }, [])
 
     return listGenresResponse
+}
+
+export const useBookDetail = (id: string) : BookDetailResponse => {
+    const [bookDetailResponse, setBookDetailResponse] = useState<BookDetailResponse>({
+        id: 0,
+        rating: 0,
+        image: "",
+        title: "",
+        description: "",
+        authors: [],
+        genres: [],
+        created_at: ""
+    })
+
+    useEffect(() => {
+        let fetchData = async () => {
+            try {
+                const response = await GET(`books/${id}`, false);
+                if (response) {
+                    setBookDetailResponse(response.data.book);
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        fetchData()
+    }, [])
+
+    return bookDetailResponse
 }

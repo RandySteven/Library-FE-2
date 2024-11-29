@@ -8,3 +8,24 @@ export interface ListBookResponse {
     updated_at: string,
     deleted_at: any
 }
+
+interface Author {
+    id: number,
+    name: string
+}
+
+interface Genre {
+    id: number,
+    genre: string
+}
+
+export interface BookDetailResponse {
+    id: number,
+    rating: number,
+    image: string,
+    title: string,
+    description: string,
+    authors: Author[],
+    genres: Genre[],
+    created_at: string
+}

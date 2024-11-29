@@ -3,9 +3,11 @@ import { Fragment, useState } from "react"
 import { NavbarList } from "../Elements/NavbarList"
 import { useNavbarContent } from "@/hooks/navbarContentHook"
 import { LoginedNavbar, SignInNavbar } from "../Elements/Navbar";
+import { useTokenValidation } from "@/hooks/tokenValidationHook";
 
 export const Navbar = () => {
     let navbarContentProp  = useNavbarContent()
+    const tokenIsValidated = useTokenValidation()
 
     return (
         <>
@@ -28,7 +30,7 @@ export const Navbar = () => {
                             </div>
                             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                                 <div className="relative ml-3">
-                                    {document.cookie != `` ? <LoginedNavbar/> : <SignInNavbar />}
+                                    {!tokenIsValidated ? <LoginedNavbar/> : <SignInNavbar />}
                                 </div>
                             </div>
                         </div>
