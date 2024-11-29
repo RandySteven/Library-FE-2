@@ -73,9 +73,9 @@ const ServicesContent = (props: {
                     <h1 className="text-4xl text-center font-bold">{title}</h1>
                     <div className="flex flex-wrap justify-center gap-4 p-4">
                         {props.services.map((service, key) => (
-                            <div className="w-[30%] bg-slate-100 border border-1 rounded-lg grid grid-cols-1 my-2" key={key}>
-                                <h2 className="text-2xl">{service.name}</h2>
-                                <p>{service.description}</p>
+                            <div className="w-[30%] bg-green-200 border border-1 rounded-lg grid grid-cols-1 my-2" key={key}>
+                                <h2 className="text-2xl font-bold text-red-400 text-center py-2">{service.name}</h2>
+                                <p className="px-2 py-4">{service.description}</p>
                             </div>
                         ))}
                     </div>

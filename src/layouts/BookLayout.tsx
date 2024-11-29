@@ -11,27 +11,29 @@ export const BookLayout = (props : {
 
     return <>
         <Fragment>
-            <div className="grid grid-cols-2">
-                {/* <Image 
+            <div className="mx-4 flex flex-row">
+                <Image 
                     imgAlt={`image_for_${props.id}`}
                     imgClass="rounded"
                     imgHeight={800}
                     imgWidth={400}
                     imgSrc={book.image}
-                /> */}
-                <BookDetail
-                    title={book.title}
-                    description={book.description}
-                    authors={book.authors}
-                    genres={book.genres}
-                    createdAt={book.created_at}
-                    rating={book.rating}
                 />
-                <AuthButton>
-                    <button>
-                        test
-                    </button>
-                </AuthButton>
+                <div className="basis-3/4 w-full">
+                    <BookDetail
+                        title={book.title}
+                        description={book.description}
+                        authors={book.authors}
+                        genres={book.genres}
+                        createdAt={book.created_at}
+                        rating={book.rating}
+                    />
+                    <AuthButton>
+                        <button>
+                            Add to bag
+                        </button>
+                    </AuthButton>
+                </div>
             </div>
         </Fragment>
     </>

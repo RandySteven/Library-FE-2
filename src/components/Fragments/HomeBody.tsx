@@ -37,10 +37,11 @@ const PopularBooks = () => {
 
     return <>
         <Fragment>
-            <div className="bg-slate-400 flex flex-wrap justify-center gap-4 p-4">
+            <div className="bg-green-100 flex flex-wrap justify-center gap-4 p-4">
                 {
                     listBookResponse.map((content, key) => (
                         <BookCard 
+                            id={content.id}
                             key={content.id}
                             title={content.title}
                             image={content.image}

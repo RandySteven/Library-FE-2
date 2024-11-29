@@ -13,18 +13,18 @@ export const AuthButton: React.FC<AuthButtonProps> = ({ children }) => {
 
     return (
         <Fragment>
-        {!tokenIsValidated ? (
-            <div>
-            <Link
-                href="/login"
-                className="w-full text-center bg-slate-200 text-white font-bold"
-            >
-                Sign In
-            </Link>
+            <div className="bg-green-300 hover:bg-green-500 text-center text-white font-bold mx-8 py-2">
+                {!tokenIsValidated ? (
+                    <Link
+                        href="/login"
+                        className=" "
+                    >
+                        Sign In
+                    </Link>
+                ) : (
+                    <>{children}</>
+                )}
             </div>
-        ) : (
-            <>{children}</>
-        )}
         </Fragment>
     );
 };

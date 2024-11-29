@@ -12,6 +12,7 @@ export const BookList = () => {
                 {
                     listBookResponse.map((content, key) => (
                         <BookCard 
+                            id={content.id}
                             key={content.id}
                             title={content.title}
                             image={content.image}

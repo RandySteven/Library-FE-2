@@ -83,9 +83,9 @@ export const SignInNavbar = () => {
     return <>
         <Fragment>
             <div>
-                <a href={`login`}>
+                <Link href={`/login`}>
                     Sign In
-                </a>
+                </Link>
             </div>
         </Fragment>
     </>
