@@ -23,6 +23,7 @@ export const LoginForm = () => {
         e.preventDefault()
         const res = await POST('onboarding/login', false, loginRequest)
         document.cookie = `token=${res.data.user.token}; path=/; secure; SameSite=Strict`;
+        window.location.reload()
         redirect('/books')
     }
 
@@ -32,7 +33,7 @@ export const LoginForm = () => {
                 <form method="POST" onSubmit={handleSubmit} className="w-full bg-white my-5 py-5 justify content-center">
                     <InputLabel 
                         id="email"
-                        label="エマイル"
+                        label="Email"
                         name="email"
                         inputType="email"
                         onChange={handleChange}
@@ -42,7 +43,7 @@ export const LoginForm = () => {
                     <InputLabel 
                         id="password"
                         name="password"
-                        label="パスワルド"
+                        label="Password"
                         inputType="password"
                         onChange={handleChange}
                         value={loginRequest.password}

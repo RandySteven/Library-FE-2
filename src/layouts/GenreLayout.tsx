@@ -5,7 +5,9 @@ import { Fragment } from "react"
 export const GenreLayout = (prop : {id:string}) => {
     return <>
         <Fragment> 
-            <GenreDetail id={prop.id} />
+            <div className="px-4">
+                <GenreDetail id={prop.id} />
+            </div>
         </Fragment>
     </>
 }
