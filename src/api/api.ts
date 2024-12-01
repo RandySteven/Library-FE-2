@@ -17,13 +17,13 @@ export const GET = async (url:string, requiredJwt: boolean) => {
             headers: headers
         })
 
-        if(response.status !== 200) {
-            if(response.status === 401) {
-                redirect('/login')
-            }
-            console.error("Failed response with status:", response.status);
-            return null;   
+        if(response.status === 401) {
+            redirect('/login')
         }
+        if(response.status === 500) {
+            console.error("Failed response with status:", response.status);
+        }
+
         return response.json()
     }catch(error) {
         throw error
@@ -48,13 +48,11 @@ export const POST = async (url: string, requiredJwt: boolean, body: any) => {
             body: JSON.stringify(body),
         });
 
-        if (response.status !== 200) {
-            if (response.status === 401) {
-                redirect(`login`)
-                return
-            }
+        if(response.status === 401) {
+            redirect('/login')
+        }
+        if(response.status === 500) {
             console.error("Failed response with status:", response.status);
-            return null;
         }
 
         return response.json();

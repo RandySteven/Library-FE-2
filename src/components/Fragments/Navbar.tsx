@@ -6,6 +6,7 @@ import { LoginedNavbar, SignInNavbar } from "../Elements/Navbar";
 import { useTokenValidation } from "@/hooks/tokenValidationHook";
 
 export const Navbar = () => {
+    // window.location.reload()
     let navbarContentProp  = useNavbarContent()
     const tokenIsValidated = useTokenValidation()
 

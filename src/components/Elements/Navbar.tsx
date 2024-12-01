@@ -3,11 +3,14 @@ import React, { Fragment, useEffect, useState } from "react";
 import { NavbarProps } from "@/interfaces/props/NavbarProp";
 import Link from "next/link";
 import { useUserNavbar } from "@/hooks/navbarContentHook";
+import { redirect, useRouter } from "next/navigation";
+import { useAuth } from "@/contexts/AuthContext";
 
 export const LoginedNavbar = () => {
     const getUserLogin = useUserNavbar()
     const [isDropdownVisible, setDropdownVisible] = useState(false);
     const [language, setLanguage] = useState<string>("en");
+    const router = useRouter();
 
     useEffect(() => {
         const savedLanguage = localStorage.getItem("language");
@@ -27,6 +30,8 @@ export const LoginedNavbar = () => {
         window.dispatchEvent(new Event("languageChange"));
         window.location.reload()
     };
+
+    const { logout } = useAuth()
 
     return <>
         <Fragment>
@@ -64,7 +69,7 @@ export const LoginedNavbar = () => {
                 >
                     <button
                         onClick={() => handleLanguageChange("jp")}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200"
+                        className="w-full block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200"
                         role="menuitem"
                         id="user-menu-item-0"
                     >
@@ -72,12 +77,19 @@ export const LoginedNavbar = () => {
                     </button>
                     <button
                         onClick={() => handleLanguageChange("en")}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200"
+                        className="w-full block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200"
                         role="menuitem"
                         id="user-menu-item-1"
                     >
                         EN
                     </button>
+                    <button
+                        onClick={logout}
+                        className="w-full block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200"
+                        role="menuitem"
+                        id="user-menu-item-0">
+                        Logout
+                    </button>                        
                 </div>
             )}
         </Fragment>

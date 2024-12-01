@@ -22,8 +22,17 @@ export const LoginForm = () => {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const res = await POST('onboarding/login', false, loginRequest)
+        if (res.status === 404) {
+            alert("Record not found. Please check your email and password.");
+            return;
+        }
+
+        if (res.status !== 200) {
+            alert(`Error: ${res.statusText || "An unknown error occurred"}`);
+            return;
+        }
+
         document.cookie = `token=${res.data.user.token}; path=/; secure; SameSite=Strict`;
-        window.location.reload()
         redirect('/books')
     }
 
@@ -49,7 +58,7 @@ export const LoginForm = () => {
                         value={loginRequest.password}
                         labelFor="password"
                     />
-                    <button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 py-4 mx-6 text-white">ロギン</button>
+                    <button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 py-4 mx-6 text-white font-bold">Login</button>
                 </form>
             </div>
 
