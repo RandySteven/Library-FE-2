@@ -1,6 +1,7 @@
+'use client';
 import { CarouselsProp } from "@/interfaces/props/CarouselProp"
 import { MarketingBannerProp } from "@/interfaces/props/MarketingBannerProp"
-import React, { Fragment, useState } from "react"
+import React, { Fragment, useEffect, useState } from "react"
 
 export const MarketingBannerCarousel: React.FC<CarouselsProp> = ({children}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -15,6 +16,11 @@ export const MarketingBannerCarousel: React.FC<CarouselsProp> = ({children}) => 
             prevIndex === 0 ? totalSlides - 1 : prevIndex - 1
         );
     };
+
+    useEffect(() => {
+        const interval = setInterval(goToNextSlide, 5000); // Change slide every 5 seconds
+        return () => clearInterval(interval); // Cleanup on component unmount
+    }, [currentIndex, totalSlides]);
 
     return <>
         <Fragment>
