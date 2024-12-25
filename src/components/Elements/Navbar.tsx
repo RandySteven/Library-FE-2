@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useUserNavbar } from "@/hooks/navbarContentHook";
 import { redirect, useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
+import { BagNavbarIcon } from "./BagNavbarIcon";
 
 export const LoginedNavbar = () => {
     const getUserLogin = useUserNavbar()
@@ -36,6 +37,9 @@ export const LoginedNavbar = () => {
     return <>
         <Fragment>
             <div className="flex">
+                <div className="mr-1">
+                    <BagNavbarIcon />
+                </div>
                 <div className="mr-2">
                     {getUserLogin.name}
                 </div>

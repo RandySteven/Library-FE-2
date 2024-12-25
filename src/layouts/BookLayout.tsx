@@ -1,5 +1,6 @@
 import { AuthButton } from "@/components/Elements/AuthButton"
 import { Image } from "@/components/Elements/Image"
+import { AddToBagForm } from "@/components/Fragments/AddToBagForm"
 import { BookDetail } from "@/components/Fragments/BookDetail"
 import { useBookDetail } from "@/hooks/bookPageHook"
 import { Fragment } from "react"
@@ -29,9 +30,7 @@ export const BookLayout = (props : {
                         rating={book.rating}
                     />
                     <AuthButton>
-                        <button>
-                            Add to bag
-                        </button>
+                        <AddToBagForm id={book.id} />
                     </AuthButton>
                 </div>
             </div>

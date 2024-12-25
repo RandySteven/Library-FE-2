@@ -42,11 +42,15 @@ export const POST = async (url: string, requiredJwt: boolean, body: any) => {
 
     try {
 
+        console.log(`masuk post harusnya`)
+
         const response = await fetch(`http://localhost:8081/${url}`, {
             method: `POST`,
             headers,
             body: JSON.stringify(body),
         });
+
+        console.log(response)
 
         if(response.status === 401) {
             redirect('/login')
