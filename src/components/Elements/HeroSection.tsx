@@ -3,7 +3,7 @@ import { useTitleContentHook } from "@/hooks/titleContentHook"
 import { Fragment } from "react"
 
 export const HeroSection = () => {
-    let title = useTitleContentHook()
+    const title = useTitleContentHook()
     return <>
             <Fragment>
                 <div 

@@ -52,7 +52,7 @@ export const BookCard = (props: BookCardProp) => {
 }
 
 export const BookBagCard = (props: BookBagProp) => {
-    let gray = props.dataKey + 1 % 2 == 0 ? `300` : `200`
+    const gray = props.dataKey + 1 % 2 == 0 ? `300` : `200`
     return <>
         <Fragment>
             <Link href={`/books/${props.id}`}>

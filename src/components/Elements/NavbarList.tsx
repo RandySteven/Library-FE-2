@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation"
 
 export const NavbarList = (props: NavbarContentProp) => {
     const pathName = usePathname()
-    let selectedBgColor = pathName == props.targetLink ? `bg-green-300 text-white` : ``
+    const selectedBgColor = pathName == props.targetLink ? `bg-green-300 text-white` : ``
     return <>
         <Link href={props.targetLink} 
             className={

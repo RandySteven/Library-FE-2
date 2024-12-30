@@ -1,10 +1,9 @@
-import { useBookPopularRating } from "@/hooks/homeBodyHook"
 import { Fragment } from "react"
 import { BookCard } from "../Elements/BookCard"
 import { useGetBookList } from "@/hooks/bookPageHook"
 
 export const BookList = () => {
-    let listBookResponse = useGetBookList()   
+    const listBookResponse = useGetBookList()
 
     return <>
         <Fragment>

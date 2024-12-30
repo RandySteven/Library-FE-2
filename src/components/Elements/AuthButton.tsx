@@ -1,15 +1,14 @@
+"use client";
 import { useTokenValidation } from "@/hooks/tokenValidationHook";
-import { jwtDecode } from "jwt-decode";
-import { cookies } from "next/headers";
 import Link from "next/link";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 
 interface AuthButtonProps {
   children?: React.ReactNode;
 }
 
 export const AuthButton: React.FC<AuthButtonProps> = ({ children }) => {
-    let tokenIsValidated = useTokenValidation()
+    const tokenIsValidated = useTokenValidation()
 
     return (
         <Fragment>

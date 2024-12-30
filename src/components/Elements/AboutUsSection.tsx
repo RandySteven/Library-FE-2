@@ -6,7 +6,7 @@ import { Fragment, useEffect, useState } from "react"
 const WelcomeMessage = (props: {
     welcomeMessage: string
 }) => {
-    let localization = useLocalization()
+    const localization = useLocalization()
     const [title, setTitle] = useState<string>(`About Us`)
 
     useEffect(()=> {
@@ -29,7 +29,7 @@ const WelcomeMessage = (props: {
 const MissionContent = (props: {
     mission: string
 }) => {
-    let localization = useLocalization()
+    const localization = useLocalization()
     const [title, setTitle] = useState<string>(`Mission`)
 
     useEffect(()=> {
@@ -58,7 +58,7 @@ interface Service {
 const ServicesContent = (props: {
     services: Service[]
 }) => {
-    let localization = useLocalization()
+    const localization = useLocalization()
     const [title, setTitle] = useState<string>(`Service`)
 
     useEffect(()=> {
@@ -89,7 +89,7 @@ const WhyChooseUsContent = (props: {
         points: string[]
     }
 }) => {
-    let localization = useLocalization()
+    const localization = useLocalization()
     const [title, setTitle] = useState<string>(`Why Choose Us`)
 
     useEffect(()=> {

@@ -8,7 +8,7 @@ export const useGetBagHook = () : UserBagResponse => {
     })
 
     useEffect(() => {
-        let fetchData = async () => {
+        const fetchData = async () => {
             try{
                 const response = await GET(`/bags`, true)
                 if(response) {
@@ -25,11 +25,13 @@ export const useGetBagHook = () : UserBagResponse => {
     return userBagResponse
 }
 
-export const useAddToBagHook = ( request : AddUserBagRequest ) : AddBagBookResponse | null => {
-    const [addBagBookResponse, setAddBagBookResponse] = useState<AddBagBookResponse | null>(null)
+export const useAddToBagHook = ( request : AddUserBagRequest ) : AddBagBookResponse => {
+    const [addBagBookResponse, setAddBagBookResponse] = useState<AddBagBookResponse>({
+        book_id: 0
+    })
 
     useEffect(() => {
-        let fetchData = async () => {
+        const fetchData = async () => {
             try {
                 const response = await POST('bags', true, request)
                 if(response) {

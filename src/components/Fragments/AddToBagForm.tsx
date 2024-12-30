@@ -1,19 +1,25 @@
-import { Fragment, useState } from "react"
-import { AddToBagButton } from "../Elements/AddToBagButton"
-import { useAddToBagHook } from "@/hooks/bagHook";
+import {Fragment, useState} from "react"
+import {useAddToBagHook} from "@/hooks/bagHook";
+import {Snackbar} from "@/components/Elements/Snackbar";
+import {SnackbarStatus} from "@/interfaces/props/SnackbarProp";
 
 export const AddToBagForm = (props : {id: number}) => {
     const [request, setRequest] = useState<{ book_id: number }>({
         book_id: 0
     });
 
-    let addBagBookResponse = null
+    let success = false
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setRequest({ book_id: props.id });
         console.log(request)
-        addBagBookResponse = useAddToBagHook(request);
+
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        const addBagBookResponse = useAddToBagHook(request);
+        if(addBagBookResponse) {
+            success = true
+        }
     };
 
 
@@ -23,8 +29,8 @@ export const AddToBagForm = (props : {id: number}) => {
                 <input type="hidden" value={props.id} name="book_id"/>
                 <button type="submit">Add to bag</button>
             </form>
-            {addBagBookResponse != null && (
-                <p>Book added to bag!</p>
+            {success (
+                <Snackbar status={SnackbarStatus.SUCCESS} message={`success to add new book`} />
             )}
         </Fragment>
     </>
