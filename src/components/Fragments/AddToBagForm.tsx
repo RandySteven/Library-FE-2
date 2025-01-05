@@ -8,30 +8,30 @@ export const AddToBagForm = (props : {id: number}) => {
         book_id: 0
     });
 
-    let success = false
+    let addBagBookResponse = null
+    const [success, setSuccess] = useState<boolean>(false)
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setRequest({ book_id: props.id });
-        console.log(request)
 
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        const addBagBookResponse = useAddToBagHook(request);
+        addBagBookResponse = useAddToBagHook(request);
         if(addBagBookResponse) {
-            success = true
+            setSuccess(true)
         }
     };
 
 
     return <>
         <Fragment>
+            {/*{success ?*/}
+            {/*    <Snackbar status={SnackbarStatus.SUCCESS} message={`success to add new book`} />*/}
+            {/*    : <p></p>*/}
+            {/*}*/}
             <form action="" onSubmit={handleSubmit} method="POST">
                 <input type="hidden" value={props.id} name="book_id"/>
                 <button type="submit">Add to bag</button>
             </form>
-            {success (
-                <Snackbar status={SnackbarStatus.SUCCESS} message={`success to add new book`} />
-            )}
         </Fragment>
     </>
 }

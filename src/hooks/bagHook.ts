@@ -25,10 +25,8 @@ export const useGetBagHook = () : UserBagResponse => {
     return userBagResponse
 }
 
-export const useAddToBagHook = ( request : AddUserBagRequest ) : AddBagBookResponse => {
-    const [addBagBookResponse, setAddBagBookResponse] = useState<AddBagBookResponse>({
-        book_id: 0
-    })
+export const useAddToBagHook = ( request : AddUserBagRequest ) : AddBagBookResponse | null => {
+    const [addBagBookResponse, setAddBagBookResponse] = useState<AddBagBookResponse>(null)
 
     useEffect(() => {
         const fetchData = async () => {
