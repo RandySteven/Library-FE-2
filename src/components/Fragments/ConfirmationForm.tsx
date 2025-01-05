@@ -5,6 +5,7 @@ import {ConfirmRequest} from "@/interfaces/apis/borrow";
 import {POST} from "@/api/api";
 import {Snackbar} from "@/components/Elements/Snackbar";
 import {SnackbarStatus} from "@/interfaces/props/SnackbarProp";
+import {InputLabel} from "@/components/Elements/Input";
 
 export const ConfirmationForm = () => {
     const [confirmRequest, setConfirmRequest]= useState<ConfirmRequest>({
@@ -24,7 +25,7 @@ export const ConfirmationForm = () => {
 
     const onSubmit = async (e : FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const res = await POST('borrows/confirms', true, confirmRequest)
+        const res = await POST('borrows/confirm', true, confirmRequest)
         if(res.status !== 200) {
             alert(`Error: ${res.statusText || "An unknown error occurred"}`);
             return;
@@ -35,10 +36,17 @@ export const ConfirmationForm = () => {
     return (
         <Fragment>
             <div className={`px-4 my-4`}>
-                <form method={`POST`} onSubmit={onSubmit}>
+                <form method="POST" onSubmit={onSubmit}>
                     <div className={`w-full border border-black px-2`}>
-                        <input type={`text`} className={`w-full border border-black px-4 py-2 my-5`} name={`borrow_id`}
-                               onChange={formHandler} value={confirmRequest.borrow_id}/>
+                        <InputLabel
+                            id={`borrow_id`}
+                            label={`Borrow ID`}
+                            name={`borrow_id`}
+                            labelFor={`borrow_id`}
+                            inputType={`text`}
+                            value={confirmRequest.borrow_id}
+                            onChange={formHandler}
+                        />
                         <button type={`submit`}
                                 className={`w-full text-center bg-green-300 hover:bg-green-500 py-4 font-bold my-2 text-white`}>
                             Confirm

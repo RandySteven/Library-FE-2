@@ -25,6 +25,7 @@ export interface BookDetailResponse {
     image: string,
     title: string,
     description: string,
+    status: string,
     authors: Author[],
     genres: Genre[],
     created_at: string

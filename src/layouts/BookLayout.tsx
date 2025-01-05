@@ -4,6 +4,7 @@ import { AddToBagForm } from "@/components/Fragments/AddToBagForm"
 import { BookDetail } from "@/components/Fragments/BookDetail"
 import { useBookDetail } from "@/hooks/bookPageHook"
 import { Fragment } from "react"
+import {BorrowMessageBar} from "@/components/Elements/BorrowMessageBar";
 
 export const BookLayout = (props : {
     id: string
@@ -29,9 +30,14 @@ export const BookLayout = (props : {
                         createdAt={book.created_at}
                         rating={book.rating}
                     />
-                    <AuthButton>
-                        <AddToBagForm id={book.id} />
-                    </AuthButton>
+                        {
+                            book.status !== "Borrowed" ?
+                                <AuthButton>
+                                    <AddToBagForm id={book.id} />
+                                </AuthButton>
+                                    :
+                                <BorrowMessageBar />
+                        }
                 </div>
             </div>
         </Fragment>
