@@ -1,13 +1,13 @@
-'use client'
-import { Fragment, useState } from "react"
+"use client";
+
+import { Fragment } from "react"
 import { NavbarList } from "../Elements/NavbarList"
 import { useNavbarContent } from "@/hooks/navbarContentHook"
 import { LoginedNavbar, SignInNavbar } from "../Elements/Navbar";
 import { useTokenValidation } from "@/hooks/tokenValidationHook";
 
 export const Navbar = () => {
-    // window.location.reload()
-    let navbarContentProp  = useNavbarContent()
+    const navbarContentProp  = useNavbarContent()
     const tokenIsValidated = useTokenValidation()
 
     return (

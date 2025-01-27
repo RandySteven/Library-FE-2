@@ -23,10 +23,10 @@ export const useMarketingBannerImagePath = () : MarketingBannerContent[] => {
 }
 
 export const useGetBookList = () : ListBookResponse[] => {
-    let [listBookResponse, setListBookResponse] = useState<ListBookResponse[]>([])
+    const [listBookResponse, setListBookResponse] = useState<ListBookResponse[]>([])
 
     useEffect(() => {
-        let fetchData = async () => {
+        const fetchData = async () => {
             try {
                 const response = await GET(`books`, false);
                 if (response) {
@@ -47,7 +47,7 @@ export const useGetGenreList = () : ListGenresResponse[] => {
     const [listGenresResponse, setListGenresResponse] = useState<ListGenresResponse[]>([])
 
     useEffect(() => {
-        let fetchData = async () => {
+        const fetchData = async () => {
             try{
                 const response = await GET(`genres`, false)
                 if (response) {
@@ -77,7 +77,7 @@ export const useBookDetail = (id: string) : BookDetailResponse => {
     })
 
     useEffect(() => {
-        let fetchData = async () => {
+        const fetchData = async () => {
             try {
                 const response = await GET(`books/${id}`, false);
                 if (response) {

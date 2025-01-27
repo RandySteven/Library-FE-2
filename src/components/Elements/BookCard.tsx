@@ -1,6 +1,7 @@
 import { BookBagProp, BookCardProp } from "@/interfaces/props/BookCardProp"
 import Link from "next/link"
 import { Fragment } from "react"
+import {sliceWords} from "@/utils/util";
 
 export const BookCard = (props: BookCardProp) => {
     let statusBgColor = ``
@@ -32,7 +33,7 @@ export const BookCard = (props: BookCardProp) => {
                         </div>
                         <div className="text-center">
                             <h3 className="font-bold text-l"> 
-                                {props.title}
+                                {sliceWords(24, props.title)}
                             </h3>
                         </div>
                         <div className="grid grid-cols-2 text-center">

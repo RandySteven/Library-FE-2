@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { useLocalization } from "./localizationHook"
-import { TitleContent } from "@/interfaces/contents/TitleContent"
 
 export const useTitleContentHook = () : string => {
     const localization = useLocalization()

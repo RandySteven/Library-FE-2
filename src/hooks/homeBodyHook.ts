@@ -37,10 +37,10 @@ export const useAboutUsContentHook = () : AboutUsContent => {
 }
 
 export const useBookPopularRating = () : ListBookResponse[] => {
-    let [listBookResponse, setListBookResponse] = useState<ListBookResponse[]>([])
+    const [listBookResponse, setListBookResponse] = useState<ListBookResponse[]>([])
 
     useEffect(() => {
-        let fetchData = async () => {
+        const fetchData = async () => {
             try {
                 const response = await POST(`ratings/sort`, false, {
                     sort: "DESC",

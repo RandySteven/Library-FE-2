@@ -10,7 +10,7 @@ export const useGetGenre = (id : string) : GenreDetailResponse => {
     })
 
     useEffect(() => {
-        let fetchData = async () => {
+        const fetchData = async () => {
             try {
                 const response = await GET(`genres/${id}`, false);
                 if (response) {

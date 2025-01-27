@@ -27,3 +27,7 @@ export const getGenres = (genres: {
         </Fragment>
     ));
 };
+
+export const sliceWords = (max : number, word : string) : string => {
+    return word.length < max ? word : word.slice(0, max - 3)+"..."
+}

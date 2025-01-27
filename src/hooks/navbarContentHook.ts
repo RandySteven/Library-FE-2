@@ -38,7 +38,7 @@ export const useUserNavbar = () : LoginUserResponse=> {
     })
 
     useEffect(()=> {
-        let fetchData = async () => {
+         const fetchData = async () => {
             try {
                 const response = await GET(`onboarded`, true);
                 if (response) {
