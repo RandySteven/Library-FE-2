@@ -1,3 +1,9 @@
+export interface BookPaginationResponse {
+    next : string
+    prev : string
+    books : ListBookResponse[]
+}
+
 export interface ListBookResponse {
     id: number,
     image: string,
@@ -6,7 +12,7 @@ export interface ListBookResponse {
     rating: number,
     created_at: string,
     updated_at: string,
-    deleted_at: any
+    deleted_at: never
 }
 
 interface Author {

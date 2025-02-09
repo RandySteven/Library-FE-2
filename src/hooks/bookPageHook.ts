@@ -1,5 +1,5 @@
 import { GET } from "@/api/api"
-import { BookDetailResponse, ListBookResponse } from "@/interfaces/apis/book"
+import {BookDetailResponse, BookPaginationResponse} from "@/interfaces/apis/book"
 import { ListGenresResponse } from "@/interfaces/apis/genre"
 import { MarketingBannerContent } from "@/interfaces/contents/MarketingBannerContent"
 import { useEffect, useState } from "react"
@@ -22,25 +22,28 @@ export const useMarketingBannerImagePath = () : MarketingBannerContent[] => {
     return marketingBannerContent
 }
 
-export const useGetBookList = () : ListBookResponse[] => {
-    const [listBookResponse, setListBookResponse] = useState<ListBookResponse[]>([])
+export const useGetBookList = () : BookPaginationResponse => {
+    const [bookPageResponse, setBookPageResponse] = useState<BookPaginationResponse>({
+        next: "",
+        prev: "",
+        books: []
+    })
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await GET(`books`, false);
                 if (response) {
-                    setListBookResponse(response.data.books);
+                    setBookPageResponse(response.data.result);
                 }
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         };
-
         fetchData()
     }, [])
 
-    return listBookResponse
+    return bookPageResponse
 }
 
 export const useGetGenreList = () : ListGenresResponse[] => {
