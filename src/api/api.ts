@@ -12,10 +12,13 @@ export const GET = async (url:string, requiredJwt: boolean) => {
     }
 
     try {
+        const start = performance.now()
         const response = await fetch((`http://localhost:8081/${url}`), {
             method: `GET`,
             headers: headers
         })
+        const end = performance.now()
+        const responseTime = end - start;
 
         if(response.status === 401) {
             redirect('/login')
@@ -23,7 +26,7 @@ export const GET = async (url:string, requiredJwt: boolean) => {
         if(response.status === 500) {
             console.error("Failed response with status:", response.status);
         }
-
+        console.log(`Response time: ${responseTime} milliseconds`);
         return response.json()
     }catch(error) {
         throw error
@@ -43,12 +46,14 @@ export const POST = async (url: string, requiredJwt: boolean, body: any) => {
     try {
 
         console.log(`masuk post harusnya`)
-
+        const start = performance.now()
         const response = await fetch(`http://localhost:8081/${url}`, {
             method: `POST`,
             headers,
             body: JSON.stringify(body),
         });
+        const end = performance.now()
+        const responseTime = end - start
 
         console.log(response)
 
@@ -58,7 +63,7 @@ export const POST = async (url: string, requiredJwt: boolean, body: any) => {
         if(response.status === 500) {
             console.error("Failed response with status:", response.status);
         }
-
+        console.log(`${url} Response time: ${responseTime} milliseconds`);
         return response.json();
     } catch (error) {
         console.error("Error in POST:", error);

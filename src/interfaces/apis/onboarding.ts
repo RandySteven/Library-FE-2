@@ -3,6 +3,18 @@ export interface LoginRequest {
     password: string
 }
 
+export interface RegisterRequest {
+    first_name: string
+    last_name: string
+    phone_number: string
+    email: string
+    password: string
+    address: string
+    year: string
+    month: string
+    day: string
+}
+
 export interface LoginUserResponse {
     id: number
     name: string
